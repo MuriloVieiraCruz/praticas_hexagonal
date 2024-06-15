@@ -9,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface CustomerEntityMapper {
 
     CustomerEntity mapToCustomerEntity(Customer customer);
+
+    Customer mapToCustomer(CustomerEntity customerEntity);
 }

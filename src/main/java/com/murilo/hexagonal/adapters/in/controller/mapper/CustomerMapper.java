@@ -1,6 +1,7 @@
 package com.murilo.hexagonal.adapters.in.controller.mapper;
 
 import com.murilo.hexagonal.adapters.in.controller.request.CustomerRequest;
+import com.murilo.hexagonal.adapters.in.controller.response.CustomerResponse;
 import com.murilo.hexagonal.application.core.domain.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,4 +12,6 @@ public interface CustomerMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "address", ignore = true)
     Customer mapToCustomer(CustomerRequest customerRequest);
+
+    CustomerResponse mapToCustomerResponse(Customer customer);
 }
