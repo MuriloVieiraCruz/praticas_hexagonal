@@ -4,6 +4,7 @@ import com.murilo.hexagonal.adapters.in.controller.mapper.CustomerMapper;
 import com.murilo.hexagonal.adapters.in.controller.request.CustomerRequest;
 import com.murilo.hexagonal.adapters.in.controller.response.CustomerResponse;
 import com.murilo.hexagonal.application.core.domain.Customer;
+import com.murilo.hexagonal.application.ports.in.DeleteCustomerByIdInput;
 import com.murilo.hexagonal.application.ports.in.FindCustomerByIdInput;
 import com.murilo.hexagonal.application.ports.in.InsertCustomerInput;
 import com.murilo.hexagonal.application.ports.in.UpdateCustomerInput;
@@ -24,6 +25,9 @@ public class CustomerController {
 
     @Autowired
     private UpdateCustomerInput updateCustomerInput;
+
+    @Autowired
+    private DeleteCustomerByIdInput deleteCustomerByIdInput;
 
     @Autowired
     private CustomerMapper customerMapper;
@@ -47,4 +51,11 @@ public class CustomerController {
         updateCustomerInput.update(customer, customerRequest.getZipCode());
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable final String id) {
+        deleteCustomerByIdInput.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
 }
