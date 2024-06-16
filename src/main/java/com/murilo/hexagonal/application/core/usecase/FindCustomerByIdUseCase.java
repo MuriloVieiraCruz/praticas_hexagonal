@@ -4,11 +4,11 @@ import com.murilo.hexagonal.application.core.domain.Customer;
 import com.murilo.hexagonal.application.ports.in.FindCustomerByIdInput;
 import com.murilo.hexagonal.application.ports.out.FindCustomerByIdOutput;
 
-public class FindCustomerByIdUserCase implements FindCustomerByIdInput {
+public class FindCustomerByIdUseCase implements FindCustomerByIdInput {
 
     private final FindCustomerByIdOutput findCustomerByIdOutput;
 
-    public FindCustomerByIdUserCase(FindCustomerByIdOutput findCustomerByIdOutput) {
+    public FindCustomerByIdUseCase(FindCustomerByIdOutput findCustomerByIdOutput) {
         this.findCustomerByIdOutput = findCustomerByIdOutput;
     }
 

@@ -6,13 +6,13 @@ import com.murilo.hexagonal.application.ports.in.InsertCustomerInput;
 import com.murilo.hexagonal.application.ports.out.FindAddressByZipCodeOutput;
 import com.murilo.hexagonal.application.ports.out.InsertCustomerOutput;
 
-public class InsertCustomerUserCase implements InsertCustomerInput {
+public class InsertCustomerUseCase implements InsertCustomerInput {
 
     private final FindAddressByZipCodeOutput findAddressByZipCodeOutput;
 
     private final InsertCustomerOutput insertCustomerOutput;
 
-    public InsertCustomerUserCase(FindAddressByZipCodeOutput findAddressByZipCodeOutput, InsertCustomerOutput insertCustomerOutput) {
+    public InsertCustomerUseCase(FindAddressByZipCodeOutput findAddressByZipCodeOutput, InsertCustomerOutput insertCustomerOutput) {
         this.insertCustomerOutput = insertCustomerOutput;
         this.findAddressByZipCodeOutput = findAddressByZipCodeOutput;
     }
