@@ -1,9 +1,18 @@
-murilo:
-  client:
-    address:
-      url: http://localhost:8082/addresses
+server:
+  port: 8081
 
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/hexagonal
+      container-name: mongo_caralho
+      host: 127.0.0.1
+      port: 27017
+      authentication-database: admin
+      username: murilo
+      password: example
+      database: hexagonal
+
+murilo:
+  client:
+    address:
+      url: http://localhost:8082/addresses

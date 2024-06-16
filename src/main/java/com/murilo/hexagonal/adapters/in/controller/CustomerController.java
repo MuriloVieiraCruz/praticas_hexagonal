@@ -32,7 +32,7 @@ public class CustomerController {
     @Autowired
     private CustomerMapper customerMapper;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<Void> insert(@RequestBody @Valid CustomerRequest customer) {
         insertCustomerInput.insert(customerMapper.mapToCustomer(customer), customer.getZipCode());
         return ResponseEntity.ok().build();
@@ -44,7 +44,7 @@ public class CustomerController {
         return ResponseEntity.ok().body(customerResponse);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update(@PathVariable final String id, @RequestBody @Valid CustomerRequest customerRequest) {
         Customer customer = customerMapper.mapToCustomer(customerRequest);
         customer.setId(id);
@@ -52,7 +52,7 @@ public class CustomerController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable final String id) {
         deleteCustomerByIdInput.delete(id);
         return ResponseEntity.ok().build();

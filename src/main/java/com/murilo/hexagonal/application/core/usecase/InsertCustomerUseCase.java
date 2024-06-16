@@ -5,6 +5,7 @@ import com.murilo.hexagonal.application.core.domain.Customer;
 import com.murilo.hexagonal.application.ports.in.InsertCustomerInput;
 import com.murilo.hexagonal.application.ports.out.FindAddressByZipCodeOutput;
 import com.murilo.hexagonal.application.ports.out.InsertCustomerOutput;
+import com.murilo.hexagonal.application.ports.out.SendCpfForValidationOutput;
 
 public class InsertCustomerUseCase implements InsertCustomerInput {
 
@@ -12,9 +13,17 @@ public class InsertCustomerUseCase implements InsertCustomerInput {
 
     private final InsertCustomerOutput insertCustomerOutput;
 
-    public InsertCustomerUseCase(FindAddressByZipCodeOutput findAddressByZipCodeOutput, InsertCustomerOutput insertCustomerOutput) {
+    private final SendCpfForValidationOutput sendCpfForValidationOutput;
+
+    public InsertCustomerUseCase
+            (
+                    FindAddressByZipCodeOutput findAddressByZipCodeOutput,
+                    InsertCustomerOutput insertCustomerOutput,
+                    SendCpfForValidationOutput sendCpfForValidationOutput
+            ) {
         this.insertCustomerOutput = insertCustomerOutput;
         this.findAddressByZipCodeOutput = findAddressByZipCodeOutput;
+        this.sendCpfForValidationOutput = sendCpfForValidationOutput;
     }
 
     @Override
@@ -23,5 +32,6 @@ public class InsertCustomerUseCase implements InsertCustomerInput {
         customer.setAddress(address);
 
         insertCustomerOutput.insert(customer);
+        sendCpfForValidationOutput.send(customer.getCpf());
     }
 }

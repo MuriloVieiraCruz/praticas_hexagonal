@@ -1,6 +1,7 @@
 package com.murilo.hexagonal.adapters.out;
 
 import com.murilo.hexagonal.adapters.out.repository.CustomerRepository;
+import com.murilo.hexagonal.adapters.out.repository.entity.CustomerEntity;
 import com.murilo.hexagonal.adapters.out.repository.mapper.CustomerEntityMapper;
 import com.murilo.hexagonal.application.core.domain.Customer;
 import com.murilo.hexagonal.application.ports.out.InsertCustomerOutput;
@@ -18,6 +19,7 @@ public class InsertCustomerAdapter implements InsertCustomerOutput {
 
     @Override
     public void insert(Customer customer) {
-        customerRepository.save(customerEntityMapper.mapToCustomerEntity(customer));
+        CustomerEntity customerEntity = customerEntityMapper.mapToCustomerEntity(customer);
+        customerRepository.save(customerEntity);
     }
 }
